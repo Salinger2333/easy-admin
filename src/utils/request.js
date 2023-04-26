@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
+import { isCheckTimeout } from './auth'
 const service = axios.create({
   // 环境文件中的环境变量,读取不同环境变量读取不同
   baseURL: process.env.VUE_APP_BASE_API,
@@ -14,6 +15,12 @@ service.interceptors.request.use(
     config.headers.icode = 'A12961CE4404F3F1'
     // 统一注入token
     if (store.getters.token) {
+      if (isCheckTimeout()) {
+        // timeout exit 
+        // console.log('nihao')
+        store.dispatch('user/logout')
+        return Promise.reject(new Error('token 失效'))
+      }
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     // 必须返回 config
@@ -39,6 +46,11 @@ service.interceptors.response.use(
   },
   // 请求失败
   error => {
+    // token过期
+    if (error.response && error.response.data && error.response.data.code === 401) {
+      // console.log('nihao')
+      store.dispatch('user/logout')
+    }
     ElMessage.error(error.message)
     return Promise.reject(error)
   }
