@@ -17,7 +17,7 @@ service.interceptors.request.use(
     if (store.getters.token) {
       if (isCheckTimeout()) {
         // timeout exit 
-        // console.log('nihao')
+        console.log('nihao')
         store.dispatch('user/logout')
         return Promise.reject(new Error('token 失效'))
       }
