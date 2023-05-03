@@ -1,4 +1,6 @@
 import variables from '@/styles/variables.module.scss'
+
+console.log(variables)
 /**
  * 快捷访问
  */
