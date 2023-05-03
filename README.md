@@ -79,3 +79,6 @@
 		- 主动处理:token失效
 		- 被动处理:同时处理token失效与单点登录(挤号)
 - 箭头函数的函数体不加括号默认加上return,有括号时需要手动加上return
+- views中定义创建routes时使用了扩展操作符
+- path.resolve
+  - path.resolve([…paths])里的每个参数都类似在当前目录执行一个cd操作，从左到右执行，返回的是最后的当前目录，

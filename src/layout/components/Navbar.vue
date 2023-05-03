@@ -1,6 +1,9 @@
 <template>
   <div class="navbar">
+    <!-- 汉堡按钮 -->
+    <hamburger class="hamburger-comtainer"></hamburger>
     <div class="right-menu">
+      <!-- 头像 -->
       <el-dropdown class="avatar-container" trgger="click">
         <div class="avatar-wrapper">
           <el-avatar
@@ -31,6 +34,7 @@
 
 <script setup>
 import { useStore } from 'vuex'
+import hamburger from '@/layout/components/Hamburger/index'
 
 const store = useStore()
 const logout = () => {
@@ -45,6 +49,18 @@ const logout = () => {
   position: relative;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background 0.5s;
+
+    &:hober {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
 
   .right-menu {
     display: flex;
