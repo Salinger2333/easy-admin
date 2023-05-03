@@ -8,6 +8,7 @@
     router
   > -->
   <el-menu
+    :collapse="!$store.getters.sidebarOpened"
     :default-active="activeMenu"
     :uniqueOpened="true"
     background-color="#f6f6f7"
