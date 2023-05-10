@@ -13,6 +13,7 @@
     "countup.js": "^2.2.0",
     "echarts": "^5.4.2",
     "element-plus": "^1.0.2-beta.28",
+    "fuse.js": "^6.4.6",
     "md5": "^2.3.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",

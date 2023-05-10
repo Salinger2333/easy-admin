@@ -84,7 +84,12 @@
 - views中定义创建routes时使用了扩展操作符
 - path.resolve
   - path.resolve([…paths])里的每个参数都类似在当前目录执行一个cd操作，从左到右执行，返回的是最后的当前目录，
+  - 经常用于basePath+route.path重
 - 折叠菜单
   - 使用vuex来处理折叠与否
   - toggleClick触发mutations改变状态
   - 使用css的calc()方法计算
+
+- 搜索
+  - 先像动态路由那样获得路由信息
+  - 通过第三方库fuse.js实现模糊搜索

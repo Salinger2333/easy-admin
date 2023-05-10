@@ -3,7 +3,9 @@
     <!-- 汉堡按钮 -->
     <hamburger class="hamburger-comtainer"></hamburger>
     <breadcrumb class="breadcrumb-container"></breadcrumb>
+
     <div class="right-menu">
+      <header-search class="right-menu-itm"></header-search>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trgger="click">
         <div class="avatar-wrapper">
@@ -35,8 +37,9 @@
 
 <script setup>
 import { useStore } from 'vuex'
-import hamburger from '@/layout/components/Hamburger/index'
-import breadcrumb from '@/layout/components/Breadcrump/index'
+import hamburger from '@/components/Hamburger/index'
+import breadcrumb from '@/components/Breadcrump/index'
+import HeaderSearch from '@/components/HeaderSearch/index.vue'
 
 const store = useStore()
 const logout = () => {
@@ -51,6 +54,10 @@ const logout = () => {
   position: relative;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .right-menu-itm {
+    padding-right: 10px;
+  }
 
   .hamburger-container {
     line-height: 46px;
@@ -77,6 +84,7 @@ const logout = () => {
       cursor: pointer;
       .avatar-wrapper {
         margin-top: 5px;
+        padding-right: 5px;
         position: relative;
         .el-avatar {
           --el-avatar-bg-color: none;
