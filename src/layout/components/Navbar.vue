@@ -5,7 +5,8 @@
     <breadcrumb class="breadcrumb-container"></breadcrumb>
 
     <div class="right-menu">
-      <header-search class="right-menu-itm"></header-search>
+      <lang-select class="right-menu-item hover-effect" />
+      <header-search class="right-menu-itm hover-effect"></header-search>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trgger="click">
         <div class="avatar-wrapper">
@@ -40,6 +41,7 @@ import { useStore } from 'vuex'
 import hamburger from '@/components/Hamburger/index'
 import breadcrumb from '@/components/Breadcrump/index'
 import HeaderSearch from '@/components/HeaderSearch/index.vue'
+import LangSelect from '@/components/LangSelect/index.vue'
 
 const store = useStore()
 const logout = () => {
@@ -80,12 +82,25 @@ const logout = () => {
     float: right;
     padding-right: 16px;
 
+    ::v-deep .right-menu-item {
+      display: inline-block;
+      padding: 0 18px 0 0;
+      font-size: 24px;
+      color: #5a5e66;
+      vertical-align: text-bottom;
+
+      &.hover-effect {
+        cursor: pointer;
+      }
+    }
+
     ::v-deep .avatar-container {
       cursor: pointer;
       .avatar-wrapper {
         margin-top: 5px;
         padding-right: 5px;
         position: relative;
+        
         .el-avatar {
           --el-avatar-bg-color: none;
           margin-right: 12px;
