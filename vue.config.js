@@ -3,6 +3,11 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      fallback: { path: require.resolve('path-browserify') }
+    }
+  },
   // webpack devServer提供了代理功能,该代理可以把所有请求到当前服务中的请求转发代理到另外一个服务器上
   devServer: {
     // 但地址中有/api的时候会触发代理机制

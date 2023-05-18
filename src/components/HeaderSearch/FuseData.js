@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'path-browserify'
 
 /**
  * 把遍历出来的路由表改成fusejs需要的形式
@@ -7,24 +7,31 @@ import path from 'path'
  * @param {prefixTitle} 路由表  
  */
 export const generateRoutes = (routes, basePath = '/', prefixTitle = []) => {
-  // 创建result 数据
-  const res = []
-
+  // 创建 result 数据
+  let res = []
+  // 循环 routes 路由
   for (const route of routes) {
-    // 创建包含path和titile的item
+    // 创建包含 path 和 title 的 item
     const data = {
       path: path.resolve(basePath, route.path),
       title: [...prefixTitle]
     }
-    // 动态路由不允许被检索
-    // 使用正则判断是否为动态路由
+    // 当前存在 meta 时，使用 i18n 解析国际化数据，组合成新的 title 内容
+    // 动态路由不允许被搜索
+    // 匹配动态路由的正则
     const re = /.*\/:.*/
     if (route.meta && route.meta.title && !re.exec(route.path)) {
-      // const i18ntitle = i18n.global.t(`msg.route.${route.meta.title}`)
-      // data.title = [...data.title, i18ntitle]
+      data.title = [...data.title, route.meta.title]
       res.push(data)
     }
-  }
 
+    // 存在 children 时，迭代调用
+    if (route.children) {
+      const tempRoutes = generateRoutes(route.children, data.path, data.title)
+      if (tempRoutes.length >= 1) {
+        res = [...res, ...tempRoutes]
+      }
+    }
+  }
   return res
 }

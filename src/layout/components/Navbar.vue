@@ -5,7 +5,7 @@
     <breadcrumb class="breadcrumb-container"></breadcrumb>
 
     <div class="right-menu">
-      <lang-select class="right-menu-item hover-effect" />
+      <lang-select class="lang-select right-menu-item hover-effect" />
       <header-search class="right-menu-itm hover-effect"></header-search>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trgger="click">
@@ -21,14 +21,14 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item>主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
             </router-link>
             <a target="__blank" href="#">
-              <el-dropdown-item>课程主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="logout"
-              >退出登录</el-dropdown-item
-            >
+            <el-dropdown-item divided @click="logout">{{
+              $t('msg.navBar.logout')
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -56,6 +56,11 @@ const logout = () => {
   position: relative;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .lang-select {
+    margin-right: 15px;
+    font-size: 25px;
+  }
 
   .right-menu-itm {
     padding-right: 10px;
@@ -100,7 +105,7 @@ const logout = () => {
         margin-top: 5px;
         padding-right: 5px;
         position: relative;
-        
+
         .el-avatar {
           --el-avatar-bg-color: none;
           margin-right: 12px;

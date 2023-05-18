@@ -93,3 +93,13 @@
 - 搜索
   - 先像动态路由那样获得路由信息
   - 通过第三方库fuse.js实现模糊搜索
+
+- scoped
+  - .example[data-v-f3f3eg9]
+  - 深度选择器 .a :deep(.b)
+
+- CSS Modules 是一个流行的，用于模块化和组合 CSS 的系统
+  - 和scoped一样,都能避免css全局带来的污染
+  - 变成哈希值
+  - 可以composes继承另一个选择器的规则
+  - 定义常量

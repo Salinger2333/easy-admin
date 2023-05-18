@@ -4,10 +4,13 @@
   <!-- not element icon  -->
   <svg-icon v-else :icon="icon"> </svg-icon>
   <!-- text -->
-  <span>{{  title }}</span>
+  <!-- 以路由表的title对应国际化的key值得到真正的标题 -->
+  <span>{{  generateTitle(title) }}</span>
 </template>
 
 <script setup>
+// 生成国际化的title
+import { generateTitle } from '@/utils/i18n'
 import { defineProps } from 'vue'
 defineProps({
   title: {
