@@ -15,12 +15,11 @@ export default {
     导入用户账号：<br />
     可使用导入的用户名登录 <br />
     密码统一为：123456  <br />
-    <b>注意：导入用户区分中英文库！！！！</b>
     `
   },
   route: {
     profile: '个人中心',
-    chart: '数据可视化',
+    chart: '图表',
     user: '用户',
     excelImport: 'Excel导入',
     userManage: '员工管理',
